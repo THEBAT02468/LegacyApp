@@ -1,58 +1,45 @@
-<<<<<<< HEAD
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-=======
 # LegacyApp
 
 **LegacyApp (GymApp)** es una aplicación móvil desarrollada con **React Native y Expo** que permite explorar rutinas de entrenamiento organizadas por disciplina y nivel.  
 Incluye perfiles de instructores y un catálogo de ejercicios con contenido visual, todo dentro de una interfaz moderna, intuitiva y motivadora.
 
->>>>>>> adc52e5519d707f8ad1047b6000df85d721b9868
+## Características
+
+- **Diseño intuitivo**: Diseño limpio y minimalista, con un enfoque en la experiencia de usuario.
+- **Diseño de rutinas**: Organiza rutinas de entrenamiento en categorías y niveles, con una interfaz clara y fácil de usar.
+- **Contenido visual**: Presenta ejercicios con imágenes y vídeos, y ofrece una experiencia de entrenamiento visual y emocional.
+- **Perfiles de instructores**: Proporciona información detallada sobre instructores, con una vista de perfil personalizada y una lista de rutinas recomendadas.
+- **Catálogo de ejercicios**: Proporciona una lista de ejercicios con descripciones detalladas, equipo y músculos.
+- **Rutinas de entrenamiento**: Proporciona una lista de rutinas de entrenamiento con descripciones detalladas, equipo y músculos.
+- **Configuración personalizada**: Permite personalizar la apariencia y la funcionalidad de la aplicación, a través de ajustes y opciones.
+
+## Tecnologías utilizadas
+
+- **React Native**: Framework de desarrollo para aplicaciones móviles, utilizado para construir la interfaz de usuario.
+- **Expo**: Plataforma de desarrollo de aplicaciones móviles, proporcionando una experiencia de desarrollo rápida y fácil.
+- **React Navigation**: Biblioteca de navegación para React Native, utilizada para crear una estructura de rutas y navegación en la aplicación.
+- **React Query**: Biblioteca de consultas y gestión de estado para React, utilizada para cargar y manejar datos de la aplicación.
+- **React Native Vector Icons**: Biblioteca de iconos vectoriales para React Native, utilizada para agregar iconos a la interfaz de usuario.
+- **React Native Paper**: Biblioteca de componentes de interfaz de usuario para React Native, utilizada para crear elementos de interfaz de usuario como botones, formularios y listas.
+- **React Native Reanimated**: Biblioteca de animación para React Native, utilizada para crear animaciones y transiciones en la interfaz de usuario.
+- **React Native Linear Gradient**: Biblioteca de gradientes lineales para React Native, utilizada para crear un efecto de degradado en la interfaz de usuario.
+- **React Native Paper**: Biblioteca de componentes de interfaz de usuario para React Native, utilizada para crear elementos de interfaz de usuario como botones, formularios y listas.
+- **React Native Paper**: Biblioteca de componentes de interfaz de usuario para React Native, utilizada para crear elementos de interfaz de usuario como botones, formularios y listas.
+
+## Desarrollo
+
+Para comenzar a desarrollar la aplicación, sigue los siguientes pasos:
+
+1. Clona el repositorio del proyecto en tu computadora.
+2. Instala las dependencias necesarias.
+3. Inicia el servidor de desarrollo.
+4. Abre el proyecto en tu editor de código favorito.
+5. Inicia la aplicación en tu dispositivo móvil.
+
+## Autor
+
+[TheBat](https://github.com/THEBAT02468)
+
+## Licencia
+
+Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.         
