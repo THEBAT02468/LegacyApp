@@ -30,22 +30,24 @@ export default function ExerciseDetail() {
   // Aquí simulamos la data para que veas el diseño:
   // Simulación de data ajustada para Dominadas Asistidas
   const exerciseData = {
-    name: "DOMINADAS ASISTIDAS",
-    level: "PRINCIPIANTE",
-    videoThumbnail: require("../../assets/images/calistenia/assisted-pullup.jpg"), // Asegúrate de tener esta imagen o usa la anterior
-    videoUrl: "https://www.youtube.com/shorts/BvDq9tHV7yY",
-    description:
-      "La variante perfecta para construir la fuerza base necesaria. Utiliza asistencia (máquina o banda) para completar el rango de movimiento con técnica perfecta.",
-    muscles: ["Dorsales", "Bíceps", "Escápulas", "Core"],
-    steps: [
-      "Ajusta el peso en la máquina (a más peso, más ayuda) o coloca la banda en la barra.",
-      "Apoya las rodillas o pies firmemente en la plataforma o banda elástica.",
-      "Sujeta la barra con un agarre cómodo y realiza una retracción escapular (hombros abajo).",
-      "Sube de forma controlada hasta que tu barbilla supere la barra, manteniendo el pecho erguido.",
-      "Baja lentamente extendiendo los brazos por completo sin soltar la tensión.",
-    ],
-    tips: "No dejes que el peso de la máquina te empuje hacia arriba bruscamente; mantén el control en todo momento.",
-  };
+  name: "FLEXIONES DE RODILLAS",
+  level: "PRINCIPIANTE",
+  videoThumbnail: require("../../assets/images/calistenia/push-up.jpg"),
+  videoUrl: "https://www.youtube.com/shorts/UIcct-7b6oE",
+  description:
+    "Ejercicio ideal para iniciar en las flexiones. Al apoyar las rodillas se reduce la carga, permitiendo desarrollar fuerza en pecho, brazos y core mientras se perfecciona la técnica.",
+  muscles: ["Pectorales", "Tríceps", "Deltoides", "Core"],
+  steps: [
+    "Colócate en posición de plancha apoyando las manos debajo de los hombros y las rodillas en el suelo.",
+    "Mantén el cuerpo alineado desde la cabeza hasta las rodillas y activa el core.",
+    "Flexiona los codos bajando el pecho de forma controlada hacia el suelo.",
+    "Empuja con las palmas para volver a la posición inicial, extendiendo los brazos.",
+    "Mantén la respiración controlada durante todo el movimiento.",
+  ],
+  tips:
+    "Evita arquear la espalda o abrir demasiado los codos; mantén el abdomen firme y el movimiento controlado.",
+};
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
