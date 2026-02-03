@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
@@ -48,3 +49,10 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+=======
+# LegacyApp
+
+**LegacyApp (GymApp)** es una aplicación móvil desarrollada con **React Native y Expo** que permite explorar rutinas de entrenamiento organizadas por disciplina y nivel.  
+Incluye perfiles de instructores y un catálogo de ejercicios con contenido visual, todo dentro de una interfaz moderna, intuitiva y motivadora.
+
+>>>>>>> adc52e5519d707f8ad1047b6000df85d721b9868
