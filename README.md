@@ -1,2 +1,5 @@
 # LegacyApp
-GymApp es una aplicación móvil desarrollada con React Native y Expo que permite explorar rutinas de entrenamiento por disciplina y nivel, conocer instructores y acceder a ejercicios con contenido visual, todo en una interfaz moderna y motivadora.
+
+**LegacyApp (GymApp)** es una aplicación móvil desarrollada con **React Native y Expo** que permite explorar rutinas de entrenamiento organizadas por disciplina y nivel.  
+Incluye perfiles de instructores y un catálogo de ejercicios con contenido visual, todo dentro de una interfaz moderna, intuitiva y motivadora.
+
