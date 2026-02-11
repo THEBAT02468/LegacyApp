@@ -1,5 +1,5 @@
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   FlatList,
   Image,
@@ -36,6 +36,7 @@ interface Exercise {
   image: any;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface WorkoutPlan {
   id: string;
   name: string;
@@ -128,37 +129,15 @@ const EXERCISES: Exercise[] = [
   },
 ];
 
-const WORKOUT_PLANS: WorkoutPlan[] = [
-  {
-    id: "1",
-    name: "RUTINA INICIAL 3x/SEMANA",
-    focus: "Fuerza y técnica",
-    duration: "45-60 min",
-    exercises: ["Flexiones", "Dominadas", "Sentadillas", "Plancha"],
-  },
-  {
-    id: "2",
-    name: "RUTINA INTERMEDIA PPL",
-    focus: "Hipertrofia calisténica",
-    duration: "60-75 min",
-    exercises: ["Push day", "Pull day", "Legs day", "Skill work"],
-  },
-  {
-    id: "3",
-    name: "RUTINA AVANZADA SKILLS",
-    focus: "Movimientos avanzados",
-    duration: "75-90 min",
-    exercises: ["Planche training", "Front lever", "Handstand", "Combos"],
-  },
-];
-
 export default function CalisteniaDetail() {
   const router = useRouter();
+  const { disciplineId } = useLocalSearchParams<{ disciplineId: string }>();
 
+  /* ---------- RENDER LEVEL ---------- */
   const renderLevelCard = ({ item }: { item: Level }) => (
     <TouchableOpacity
       style={styles.levelCard}
-      onPress={() => router.push(`/levels/${item.id}`)}
+      onPress={() => router.push(`../levels/${item.id}` as any)}
       activeOpacity={0.8}
     >
       <View
@@ -169,107 +148,58 @@ export default function CalisteniaDetail() {
           {item.name}
         </Text>
       </View>
+
       <View style={styles.levelContent}>
         <Text style={styles.levelDescription}>{item.description}</Text>
+
         <View style={styles.levelDetail}>
           <Ionicons name="time" size={16} color={COLORS.lightBlue} />
           <Text style={styles.levelDetailText}>{item.duration}</Text>
         </View>
+
         <View style={styles.focusContainer}>
-          {item.focus.map((focusItem: string, index: number) => (
-            <View key={`focus-${item.id}-${index}`} style={styles.focusTag}>
+          {item.focus.map((focusItem, index) => (
+            <View key={index} style={styles.focusTag}>
               <Text style={styles.focusText}>{focusItem}</Text>
             </View>
           ))}
         </View>
-        <View style={styles.exercisesPreview}>
-          <Text style={styles.exercisesTitle}>Ejercicios clave:</Text>
-          {item.exercises.slice(0, 2).map((exercise: string, index: number) => (
-            <Text
-              key={`ex-prev-${item.id}-${index}`}
-              style={styles.exerciseItem}
-            >
-              • {exercise}
-            </Text>
-          ))}
-        </View>
       </View>
+
       <TouchableOpacity
         style={[styles.levelButton, { backgroundColor: item.color }]}
-        onPress={() => router.push(`/levels/${item.id}`)}
+        onPress={() =>
+          router.push(`/disciplines/${disciplineId}/levels/${item.id}` as any)
+        }
       >
         <Text style={styles.levelButtonText}>EXPLORAR NIVEL</Text>
       </TouchableOpacity>
     </TouchableOpacity>
   );
 
+  /* ---------- RENDER EXERCISE ---------- */
   const renderExerciseCard = ({ item }: { item: Exercise }) => (
-    <TouchableOpacity style={styles.exerciseCard} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={styles.exerciseCard}
+      activeOpacity={0.85}
+      onPress={() =>
+        router.push(`/disciplines/${disciplineId}/exercises/${item.id}` as any)
+      }
+    >
       <Image source={item.image} style={styles.exerciseImage} />
       <View style={styles.exerciseInfo}>
-        <View style={styles.exerciseHeader}>
-          <Text style={styles.exerciseName}>{item.name}</Text>
-          <View style={styles.difficultyBadge}>
-            <Text style={styles.difficultyText}>{item.difficulty}</Text>
-          </View>
-        </View>
-        <Text style={styles.exerciseLevel}>{item.level}</Text>
+        <Text style={styles.exerciseName}>{item.name}</Text>
         <Text style={styles.exerciseDescription}>{item.description}</Text>
-        <View style={styles.progressionContainer}>
-          <Text style={styles.progressionTitle}>Progresión:</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {item.progression.map((step: string, index: number) => (
-              <View
-                key={`prog-${item.id}-${index}`}
-                style={styles.progressionStep}
-              >
-                <Text style={styles.progressionStepText}>{step}</Text>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
       </View>
-    </TouchableOpacity>
-  );
-
-  const renderWorkoutPlan = ({ item }: { item: WorkoutPlan }) => (
-    <TouchableOpacity style={styles.workoutPlanCard} activeOpacity={0.8}>
-      <View style={styles.planHeader}>
-        <Text style={styles.planName}>{item.name}</Text>
-        <MaterialCommunityIcons
-          name="dumbbell"
-          size={24}
-          color={COLORS.calistenia}
-        />
-      </View>
-      <View style={styles.planDetails}>
-        <View style={styles.planDetail}>
-          <Ionicons name="flame" size={16} color={COLORS.calistenia} />
-          <Text style={styles.planDetailText}>{item.focus}</Text>
-        </View>
-        <View style={styles.planDetail}>
-          <Ionicons name="time" size={16} color={COLORS.calistenia} />
-          <Text style={styles.planDetailText}>{item.duration}</Text>
-        </View>
-      </View>
-      <View style={styles.exercisesList}>
-        {item.exercises.map((exercise: string, index: number) => (
-          <View key={`workplan-${item.id}-${index}`} style={styles.exerciseTag}>
-            <Text style={styles.exerciseTagText}>{exercise}</Text>
-          </View>
-        ))}
-      </View>
-      <TouchableOpacity style={styles.startWorkoutButton}>
-        <Text style={styles.startWorkoutText}>INICIAR RUTINA</Text>
-      </TouchableOpacity>
     </TouchableOpacity>
   );
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" />
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        {/* Header con imagen */}
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* HEADER */}
         <View style={styles.header}>
           <Image
             source={require("../../assets/images/calistenia/header.jpg")}
@@ -280,8 +210,9 @@ export default function CalisteniaDetail() {
               style={styles.backButton}
               onPress={() => router.back()}
             >
-              <Ionicons name="arrow-back" size={24} color={COLORS.white} />
+              <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
+
             <View style={styles.headerContent}>
               <Text style={styles.disciplineTitle}>CALISTENIA</Text>
               <Text style={styles.disciplineSubtitle}>
@@ -291,112 +222,23 @@ export default function CalisteniaDetail() {
           </View>
         </View>
 
-        {/* Introducción */}
-        <View style={styles.introSection}>
-          <Text style={styles.introTitle}>¿QUÉ ES LA CALISTENIA?</Text>
-          <Text style={styles.introText}>
-            La calistenia es un sistema de entrenamiento que utiliza el peso del
-            propio cuerpo para desarrollar fuerza, flexibilidad y control
-            corporal. Desde movimientos básicos hasta habilidades avanzadas, es
-            el camino hacia el dominio de tu cuerpo.
-          </Text>
-          <View style={styles.benefitsContainer}>
-            <View style={styles.benefitItem}>
-              <Ionicons name="body" size={28} color={COLORS.calistenia} />
-              <Text style={styles.benefitText}>Fuerza Funcional</Text>
-            </View>
-            <View style={styles.benefitItem}>
-              <Ionicons name="fitness" size={28} color={COLORS.calistenia} />
-              <Text style={styles.benefitText}>Control Corporal</Text>
-            </View>
-            <View style={styles.benefitItem}>
-              <Ionicons name="cube" size={28} color={COLORS.calistenia} />
-              <Text style={styles.benefitText}>Minimalismo</Text>
-            </View>
-            <View style={styles.benefitItem}>
-              <Ionicons name="people" size={28} color={COLORS.calistenia} />
-              <Text style={styles.benefitText}>Comunidad</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Niveles de Progresión */}
+        {/* NIVELES */}
         <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>NIVELES DE PROGRESIÓN</Text>
-            <Text style={styles.sectionSubtitle}>
-              Avanza paso a paso en tu viaje calisténico
-            </Text>
-          </View>
+          <Text style={styles.sectionTitle}>NIVELES DE PROGRESIÓN</Text>
           <FlatList
             data={LEVELS}
+            horizontal
             renderItem={renderLevelCard}
             keyExtractor={(item) => item.id}
-            horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.levelsList}
           />
         </View>
 
-        {/* Ejercicios Fundamentales */}
+        {/* EJERCICIOS */}
         <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>EJERCICIOS FUNDAMENTALES</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAll}>Ver todos</Text>
-            </TouchableOpacity>
-          </View>
+          <Text style={styles.sectionTitle}>EJERCICIOS FUNDAMENTALES</Text>
           {EXERCISES.map((exercise) => renderExerciseCard({ item: exercise }))}
         </View>
-
-        {/* Rutinas Predefinidas */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>RUTINAS PREDEFINIDAS</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAll}>Personalizar</Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
-            data={WORKOUT_PLANS}
-            renderItem={renderWorkoutPlan}
-            keyExtractor={(item) => item.id}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.workoutList}
-          />
-        </View>
-
-        {/* Equipamiento */}
-        <View style={styles.equipmentSection}>
-          <Text style={styles.equipmentTitle}>EQUIPAMIENTO BÁSICO</Text>
-          <View style={styles.equipmentGrid}>
-            <View style={styles.equipmentItem}>
-              <Ionicons name="barbell" size={32} color={COLORS.calistenia} />
-              <Text style={styles.equipmentName}>Barra de Dominadas</Text>
-            </View>
-            <View style={styles.equipmentItem}>
-              <Ionicons name="square" size={32} color={COLORS.calistenia} />
-              <Text style={styles.equipmentName}>Paralelas</Text>
-            </View>
-            <View style={styles.equipmentItem}>
-              <Ionicons name="bandage" size={32} color={COLORS.calistenia} />
-              <Text style={styles.equipmentName}>Bandas de Resistencia</Text>
-            </View>
-            <View style={styles.equipmentItem}>
-              <Ionicons name="globe" size={32} color={COLORS.calistenia} />
-              <Text style={styles.equipmentName}>Anillas Gimnásticas</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* CTA */}
-        <TouchableOpacity style={styles.ctaButton}>
-          <Text style={styles.ctaText}>
-            DESCARGAR GUÍA COMPLETA DE CALISTENIA
-          </Text>
-          <Ionicons name="download" size={24} color={COLORS.darkBlue} />
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

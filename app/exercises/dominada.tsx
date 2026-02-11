@@ -137,6 +137,14 @@ export default function ExerciseDetail() {
         <Text style={styles.floatingActionText}>REGISTRAR SERIE</Text>
         <Ionicons name="add" size={24} color={COLORS.darkBlue} />
       </TouchableOpacity>
+
+      {/* Botón flotante de cámara */}
+      <TouchableOpacity
+        style={styles.cameraButton}
+        onPress={() => router.push("../camera/exerciseCamera")}
+      >
+        <Ionicons name="camera" size={26} color={COLORS.white} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -320,4 +328,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginRight: 10,
   },
+  cameraButton: {
+    position: "absolute",
+    bottom: 30,
+    right: 25,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: COLORS.neonBlue,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+    shadowColor: COLORS.neonBlue,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+
 });
